@@ -18,6 +18,11 @@ build() {
 
   patch -p1 < $srcdir/getrlimit-include.patch
   make || return 1
+}
+
+package() {
+  cd "$srcdir/xcpu-$pkgver"
+
   make install installman INSTALLPREFIX=$pkgdir/usr
   mv $pkgdir/usr/lib64 $pkgdir/usr/lib
   
