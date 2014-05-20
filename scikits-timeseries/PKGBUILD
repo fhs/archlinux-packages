@@ -24,7 +24,12 @@ build() {
   done
 
   cd "$srcdir/scikits.timeseries-$pkgver"
-  
+  python2 setup.py build
+}
+
+package() {
+  cd "$srcdir/scikits.timeseries-$pkgver"
+
   python2 setup.py install --root=$pkgdir
   install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
