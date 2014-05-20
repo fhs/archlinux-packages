@@ -1,0 +1,29 @@
+# Maintainer: Fazlul Shahriar <fshahriar@gmail.com>
+pkgname=python2-igraph
+pkgver=0.6.5
+pkgrel=1
+pkgdesc="A python library for creating and manipulating (un)directed graphs."
+arch=('i686' 'x86_64')
+url="http://igraph.sourceforge.net/index.html"
+license=('GPL2')
+depends=('python2' 'igraph')
+_archivename=python-igraph
+source=("http://pypi.python.org/packages/source/p/python-igraph/$_archivename-$pkgver.tar.gz")
+md5sums=('c626585baf003af855c0dc4eec0c9baa')
+
+build() {
+  cd "$srcdir/$_archivename-$pkgver"
+  python2 setup.py build
+}
+
+package() {
+  cd "$srcdir/$_archivename-$pkgver"
+  python2 setup.py install --root=$pkgdir --optimize=1
+
+  # fix conflict with python-igraph
+  mv $pkgdir/usr/bin/igraph $pkgdir/usr/bin/igraph2
+
+  sed -i '1s%^\(#!/usr/bin/env python\)$%\12%' $pkgdir/usr/lib/python2.7/site-packages/igraph/vendor/texttable.py
+}
+
+# vim:set ts=2 sw=2 et:
