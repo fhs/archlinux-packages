@@ -1,4 +1,6 @@
 # Maintainer: Fazlul Shahriar <fshahriar@gmail.com>
+#
+# Repository: https://github.com/fhs/archlinux-packages
 pkgname=python-mdp
 pkgver=3.3
 pkgrel=1

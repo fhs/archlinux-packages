@@ -1,4 +1,6 @@
 # Maintainer: Fazlul Shahriar <fshahriar@gmail.com>
+#
+# Repository: https://github.com/fhs/archlinux-packages
 pkgname=xcpu
 pkgver=1.2.3
 pkgrel=1
